@@ -216,11 +216,11 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => cake.inStock > 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of cake objects with cakeFlavor, filling, frosting, toppings, and inStock properties. Use filter prototype to find only the cakes with an inStock property greater than 0.
   },
 
   totalInventory() {
