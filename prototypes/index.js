@@ -103,10 +103,10 @@ const clubPrompts = {
         if (result[member]) {
           result[member].push(club.club);
         } else {
-          result[member] = [club.club]
+          result[member] = [club.club];
         }
-      })
-    })
+      });
+    });
     return result;
 
     // Annotation:
@@ -140,11 +140,18 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+    mods.forEach(el => {
+      let newMod = {};
+      newMod.mod = el.mod;
+      newMod.studentsPerInstructor = el.students / el.instructors;
+      result.push(newMod);
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Take in an array of mod objects with mod, students, and instructors as properties. Need to return an array of objects with mod and studentsPerInstructor keys. Set an empty array under result variable, then go through mods array and create a new object with mod and studentsPerInstructor keys (dividing mod.students by mod.instructors to find that value). Push that object into the new array.
   }
 };
 
