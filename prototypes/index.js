@@ -27,21 +27,21 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(kitty => kitty.color === 'orange').map(orangeKitty => orangeKitty.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get in array of objects with various properties (name, age, color). Need to return array with just names of orange kitties. Use filter prototype to get orange cats, then will map over filtered cats and get back their name property
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort();
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get in same array as above
   },
 
   growUp() {
