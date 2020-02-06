@@ -37,11 +37,11 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = kitties.sort();
+    const result = kitties.sort((a, b) => (b.age - a.age));
     return result;
 
     // Annotation:
-    // Get in same array as above
+    // Get in same array as above. Need to return array with kitties sorted by age. Use sort property but instead of just a and b as variables, access the age property within them.
   },
 
   growUp() {
