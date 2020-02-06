@@ -96,15 +96,23 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = {};
+
+    clubs.forEach(club => {
+      club.members.forEach(member => {
+        if (result[member]) {
+          result[member].push(club.club);
+        } else {
+          result[member] = [club.club]
+        }
+      })
+    })
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of club objects with club and members properties. Need to return an object (with person as key and array of clubs as value). Start by going through clubs one at a time using forEach, then go through the individual members with another forEach. Set result as an empty object. If result has a key with the member's name, push the club name. Else create a key for that name and set its value to an array containing the club.
   }
 };
-
-
 
 
 
