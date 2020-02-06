@@ -226,12 +226,15 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let counter = 0;
+    cakes.forEach(cake => {
+      counter += cake.inStock;
+    });
+    const result = counter;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of cake objects with cakeFlavor, filling, frosting, toppings, and inStock properties. Create a counter variable to keep track of sum. Use forEach to go through each cake in the array and add the value of the inStock property to the counter. Set result to counter.
   },
 
   allToppings() {
