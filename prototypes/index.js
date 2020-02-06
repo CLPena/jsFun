@@ -182,11 +182,17 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+    cakes.forEach(cake => {
+      let newCake = {};
+      newCake.flavor = cake.cakeFlavor;
+      newCake.inStock = cake.inStock;
+      result.push(newCake);
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of cake objects with cakeFlavor, filling, frosting, toppings, and inStock properties. Create an empty array for the result. Go through cakes array and assign cakeFlavor and inStock values to flavor and inStock properties on a placeholder newCake object. Push that object to the result array.
   },
 
   onlyInStock() {
