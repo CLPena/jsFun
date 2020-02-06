@@ -58,8 +58,14 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+      kitty.age += 2;
+      return kitty;
+    }).sort((a, b) => (b.age - a.age));
     return result;
+
+    // Annotation:
+    // Get in same array as above. Need to create a growUp() function that adds 2 to the age property of each kitty. Use map prototype to achieve this by accessing each kitty individually and adjusting their age property. It looks like the results appear with their ages sorted, so I chained on the same sort prototype as in sortByAge (I tried invoking that directly but couldn't get it to work. Will return to this to troubleshoot later.)
   }
 };
 
