@@ -242,11 +242,19 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+    cakes.forEach(cake => {
+      cake.toppings.forEach(topping => {
+        if (!result.includes(topping)) {
+          result.push(topping);
+        }
+      });
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of cake objects with cakeFlavor, filling, frosting, toppings, and inStock properties. Create a placeholder array. Use a nested forEach to go through the cakes and then the toppings of each cake. Check the placeholder array for that topping using includes prototype, and push the topping to the array if it is not there already.
   },
 
   groceryList() {
