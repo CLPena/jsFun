@@ -327,8 +327,17 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let capacity = {};
+    capacity.feCapacity = 0;
+    capacity.beCapacity = 0;
+    classrooms.forEach(classroom => {
+      if (classroom.program === 'FE') {
+        capacity.feCapacity += classroom.capacity;
+      } else {
+        capacity.beCapacity += classroom.capacity;
+      }
+    });
+    const result = capacity;
     return result;
 
     // Annotation:
