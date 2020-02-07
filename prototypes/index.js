@@ -341,7 +341,7 @@ const classPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of objects with roomLetter, program, and capacity. Create a placeholder capacity object with feCapacity and beCapacity properties both set at 0 as default. Use forEach to go through the classrooms array. If the classroom's program property has the value of 'FE', add the value of its capacity property to the feCapacity property on the capacity object. Otherwise add the value to the beCapacity property.
   },
 
   sortByCapacity() {
