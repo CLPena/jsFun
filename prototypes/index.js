@@ -313,11 +313,11 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => classroom.program === 'FE');
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of objects with roomLetter, program, and capacity. Use filter prototype to create an array of only classrooms with a program property with the value of 'FE'.
   },
 
   totalCapacities() {
