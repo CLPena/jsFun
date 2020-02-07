@@ -267,12 +267,22 @@ const cakePrompts = {
     //    'berries': 2,
     //    ...etc
     // }
+    let groceryList = {};
+    cakes.forEach(cake => {
+      cake.toppings.forEach(topping => {
+        if (groceryList[topping]) {
+          groceryList[topping]++;
+        } else {
+          groceryList[topping] = 1;
+        }
+      });
+    });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = groceryList;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of cake objects with cakeFlavor, filling, frosting, toppings, and inStock properties. Create a placeholder object. Use forEach to go through each cake and find the toppings property. Use another forEach and go through the toppings. Check if each topping is a key on the groceryList object. If it is, add one to the value of that key. If it isn't add the key with a value of one.
   }
 };
 
