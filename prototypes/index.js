@@ -394,11 +394,17 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.reduce((acc, book) => {
+      if ((book.published > 1989) && (book.published < 2010)) {
+        acc.push({title: book.title, year: book.published});
+      }
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // if book publication is greater than 1989 but smaller than 2010, push it to array
   }
 
 };
