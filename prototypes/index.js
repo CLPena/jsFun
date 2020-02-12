@@ -487,8 +487,15 @@ const nationalParksPrompts = {
     //   parksToVisit: ["Yellowstone", "Glacier", "Everglades"],
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let parksToVisit = nationalParks.filter(park => park.visited === false);
+    let parksVisited = nationalParks.filter(park => park.visited === true);
+    let parksToVisitNames = parksToVisit.map(park => {
+      return park.name;
+    });
+    let parksVisitedNames = parksVisited.map(park => {
+      return park.name;
+    });
+    const result = {parksToVisit: parksToVisitNames, parksVisited: parksVisitedNames};
     return result;
 
     // Annotation:
@@ -504,8 +511,11 @@ const nationalParksPrompts = {
     // { Utah: 'Zion' },
     // { Florida: 'Everglades' } ]
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.map(park => {
+      let parkName = park.name;
+      let parkLocation = park.location;
+      return ({[parkLocation]: parkName});
+    });
     return result;
 
     // Annotation:
@@ -527,10 +537,28 @@ const nationalParksPrompts = {
     //   'canyoneering',
     //   'backpacking',
     //   'rock climbing' ]
+    // let allActivities = [];
+    // const result = nationalParks.forEach(el => {
+    //   el.activities.forEach(activity => {
+    //     if (!allActivities.includes(activity)) {
+    //       allActivities.push(activity);
+    //     }
+    //   })
+    //
+    //   return allActivities;
+    // });
+    // return result;
+    let activityList = [];
+    nationalParks.forEach(park => {
+      park.activities.forEach(activity => {
+        if (!activityList.includes(activity)) {
+          activityList.push(activity);
+        }
+      });
+    });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = activityList;
     return result;
-
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -555,7 +583,10 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      acc += brewery.beers.length;
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
@@ -571,7 +602,10 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result =     breweries.map(brewery => {
+          return {name: brewery.name, beerCount: brewery.beers.length}
+        });
     return result;
 
     // Annotation:
@@ -582,12 +616,16 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let allBeers = breweries.map(brewery => {
+      return brewery.beers;
+    });
+    let topABV = allBeers.flat().sort((a, b) => (b.abv - a.abv));
+    const result = topABV[0];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // need to go through all breweries and inside the brewery push the beers to a new array
+    // then, sort the by abv highest to lowest and shift the highest abv beer
   }
 };
 
@@ -631,7 +669,9 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(instructor => {
+      return {name: instructor.name, studentCount: (cohorts.find(cohort => cohort.module === instructor.module)).studentCount}
+    });
     return result;
 
     // Annotation:
@@ -645,7 +685,15 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = {};
+    cohorts.map(el => {
+      let cohortName = "cohort" + el.cohort;
+      let matchingInstructors = instructors.filter(instructor => instructor.module === el.module);
+      let numInstructors = matchingInstructors.length;
+      let studentRatio = el.studentCount / numInstructors;
+      return result[cohortName] = studentRatio;
+      // return result{cohortName: studentRatio};
+    });
     return result;
 
     // Annotation:
@@ -667,8 +715,11 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // const result = {};
+    // instructors.map(instructor => {
+    //   return result[instructor.name] = cohorts.;
+    // })
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
