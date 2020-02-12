@@ -423,11 +423,14 @@ const weatherPrompts = {
     // return an array of all the average temperatures. Eg:
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.reduce((acc, weather) => {
+      acc.push((weather.temperature.high + weather.temperature.low) / 2);
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of weather objects with location, type, humidity, and temperature properties. Temperature property is an object with a high and low property. Need to go through weather array and access the high and low within the temperature property, add them together, and divide that by two to get the average. Use reduce to create a new array via the accumulator of those results.
   },
 
   findSunnySpots() {
@@ -437,11 +440,16 @@ const weatherPrompts = {
     // 'New Orleans, Louisiana is sunny.',
     // 'Raleigh, North Carolina is mostly sunny.' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.reduce((acc, weather) => {
+      if (weather.type === 'sunny' || weather.type === 'mostly sunny') {
+        acc.push(`${weather.location} is ${weather.type}.`);
+      }
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Get an array of weather objects with location, type, humidity, and temperature properties. Temperature property is an object with a high and low property. Need to use reduce with array accumulator to go through weather and if the type is sunny or mostly sunny, push an interpolated phrase to the accumulator using weather.location and weather.type properties.
   },
 
   findHighestHumidity() {
@@ -453,7 +461,7 @@ const weatherPrompts = {
     //   temperature: { high: 49, low: 38 }
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = (weather.sort((a, b) => (b.humidity - a.humidity))).shift();
     return result;
 
     // Annotation:
