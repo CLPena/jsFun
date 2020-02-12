@@ -374,11 +374,16 @@ const bookPrompts = {
     //   'Catch-22', 'Treasure Island']
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.reduce((acc, book) => {
+      if ((book.genre !== 'Horror') && (book.genre !== 'True Crime')) {
+        acc.push(book.title);
+      }
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Take in an array of book objects with title, author, genre, and published properties. Use reduce to go through books and add book titles that satisfy either condition of an if statement to the accumulator.
 
   },
   getNewBooks() {
