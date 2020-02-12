@@ -383,7 +383,7 @@ const bookPrompts = {
     return result;
 
     // Annotation:
-    // Take in an array of book objects with title, author, genre, and published properties. Use reduce to go through books and add book titles that satisfy either condition of an if statement to the accumulator.
+    // Take in an array of book objects with title, author, genre, and published properties. Use reduce to go through books and add book titles that satisfy both conditions of an if statement to the accumulator.
 
   },
   getNewBooks() {
@@ -403,8 +403,8 @@ const bookPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
-    // if book publication is greater than 1989 but smaller than 2010, push it to array
+    // Take in an array of book objects with title, author, genre, and published properties. Use reduce to go through books and add book titles that satisfy both conditions of an if statement to the accumulator.
+    // if book publication is greater than 1989 but smaller than 2010, push it to accumulator array
   }
 
 };
