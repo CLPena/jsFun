@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
@@ -715,14 +717,20 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    // const result = {};
-    // instructors.map(instructor => {
-    //   return result[instructor.name] = cohorts.;
-    // })
-    // return result;
+    return instructors.reduce((acc, instructor) => {
+      let classes = [];
+      instructor.teaches.forEach(subject => {
+        cohorts.forEach(cohort => {
+          if(cohort.curriculum.includes(subject) && !classes.includes(cohort.module)){classes.push(cohort.module)}
+        })
+      })
+      acc[instructor.name] = classes.sort((a, b) => a - b);
+      return acc;
+    }, {})
+    return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // for each instructor, go through teaches array and find the module for the cohort.curriculum that includes that subject
   },
 
   curriculumPerTeacher() {
