@@ -743,11 +743,21 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =
+    instructors.reduce((acc, instructor) => {
+      instructor.teaches.forEach(topic => {
+        if(!acc[topic]) {
+          acc[topic] = [instructor.name]
+        } else {
+          acc[topic].push(instructor.name)
+        }
+      })
+      return acc;
+    }, {})
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // go through instructors using reduce with an object acc, for each instructor, go through teaches array and if the topic doesn't exist as a key in the object, create a key with the teacher's name as first in the array. If the key exists, push teacher.name into that array.
   }
 };
 
