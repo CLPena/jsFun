@@ -788,7 +788,14 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = bosses.keys.reduce((acc, boss) => {
+       boss.sidekicks.reduce((y, sidekick) => {
+        let x = sidekicks.find(el => el.name === sidekick);
+        console.log(x)
+        return y;
+      }, 0)
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
